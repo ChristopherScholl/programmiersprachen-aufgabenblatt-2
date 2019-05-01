@@ -1,4 +1,5 @@
 #include "mat2.hpp"
+#include <math.h>
 #include <iostream>
 
 Mat2& Mat2::operator *=(Mat2 const& m) {
@@ -12,6 +13,10 @@ Mat2& Mat2::operator *=(Mat2 const& m) {
   e_01 = h_01 * m.e_00 + h_11 * m.e_01;
   e_11 = h_01 * m.e_10 + h_11 * m.e_11;
   return *this;
+}
+
+float Mat2::det() const {
+  return e_00 * e_11 - e_10 * e_01;
 }
 
 Mat2 operator *(Mat2 const& m1, Mat2 const& m2) {
@@ -53,6 +58,7 @@ Mat2 transpose(Mat2 const& m){
   return n;
 }
 
-//Mat2 make_rotation_mat2(float phi){
-//
-//}
+Mat2 make_rotation_mat2(float phi){
+  Mat2 n{ cos(phi),-sin(phi),sin(phi),cos(phi) };
+  return n;
+}

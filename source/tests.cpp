@@ -101,6 +101,12 @@ TEST_CASE("describe_2.6", "[2.6]") {
   Vec2 c;
   Vec2 d{ 2.0,3.0 };
 
+  float f = a.det();
+  REQUIRE(f == 1.0f);
+
+  f = b.det();
+  REQUIRE(f == -2.0f);
+
   Vec2 e = a * c;
   REQUIRE(e.x_ == 0.0f);
   REQUIRE(e.y_ == 0.0f);
@@ -110,18 +116,26 @@ TEST_CASE("describe_2.6", "[2.6]") {
   e = d * b;
   REQUIRE(e.x_ == 11.0f);
   REQUIRE(e.y_ == 16.0f);
-
   a = transpose(b);
   REQUIRE(a.e_00 == 1.0f);
   REQUIRE(a.e_10 == 3.0f);
   REQUIRE(a.e_01 == 2.0f);
   REQUIRE(a.e_11 == 4.0f);
-
   a = inverse(b);
   REQUIRE(a.e_00 == Approx((4.0f)/(-10.0f)));
   REQUIRE(a.e_10 == Approx((-2.0f) / (-10.0f)));
   REQUIRE(a.e_01 == Approx((-3.0f) / (-10.0f)));
   REQUIRE(a.e_11 == Approx((1.0f) / (-10.0f)));
+  a = make_rotation_mat2(3.14159265358979323846);
+  REQUIRE(a.e_00 == Approx(-1.0));
+  REQUIRE(a.e_10 == Approx(0));
+  REQUIRE(a.e_01 == Approx(0));
+  REQUIRE(a.e_11 == Approx(-1.0));
+  a = make_rotation_mat2(0);
+  REQUIRE(a.e_00 == Approx(1.0));
+  REQUIRE(a.e_10 == Approx(0));
+  REQUIRE(a.e_01 == Approx(0));
+  REQUIRE(a.e_11 == Approx(1.0));
 }
 
 int main(int argc, char *argv[])
