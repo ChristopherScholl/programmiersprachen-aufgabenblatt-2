@@ -2,6 +2,7 @@
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include "color.hpp"
 
 TEST_CASE("describe_Vec2", "[Vec2]") {
   //2.2
@@ -136,6 +137,13 @@ TEST_CASE("describe_2.6", "[2.6]") {
   REQUIRE(a.e_10 == Approx(0));
   REQUIRE(a.e_01 == Approx(0));
   REQUIRE(a.e_11 == Approx(1.0));
+}
+
+TEST_CASE("describe_Color", "[Color]") {
+  Color a;
+  Color b{ 1.0,0,0 };
+  REQUIRE(a.r_ == Approx(0.5));
+  REQUIRE(b.r_ == Approx(1.0));
 }
 
 int main(int argc, char *argv[])
