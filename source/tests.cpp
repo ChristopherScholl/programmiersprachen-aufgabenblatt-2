@@ -75,6 +75,12 @@ TEST_CASE("describe_Mat2", "[Mat2]") {
   REQUIRE(c.e_11 == 12.0f);
 
   Mat2 d = a * c;
+  REQUIRE(d.e_00 == 24.0f);
+  REQUIRE(d.e_10 == 36.0f);
+  REQUIRE(d.e_01 == 56.0f);
+  REQUIRE(d.e_11 == 84.0f);
+
+  d = c * a;
   REQUIRE(d.e_00 == 44.0f);
   REQUIRE(d.e_10 == 64.0f);
   REQUIRE(d.e_01 == 44.0f);
