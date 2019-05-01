@@ -1,4 +1,5 @@
 #include "vec2.hpp"
+#include <iostream>
 
 Vec2& Vec2::operator +=(Vec2 const& v) {
   x_ += v.x_;
@@ -19,8 +20,13 @@ Vec2& Vec2::operator *=(float s){
 }
 
 Vec2& Vec2::operator /=(float s) {
-  x_ /= s;
-  y_ /= s;
+  if (s == 0) {
+    std::cout << "Don't divide by 0! Dividing float ignored.\n";
+  }
+  else {
+    x_ /= s;
+    y_ /= s;
+  }
   return *this;
 }
 
@@ -44,7 +50,12 @@ Vec2 operator *(Vec2 const& v, float s) {
 
 Vec2 operator /(Vec2 const& v, float s) {
   Vec2 w = v;
-  w /= s;
+  if (s == 0) {
+    std::cout << "Don't divide by 0! Dividing float ignored.\n";
+  }
+  else {
+    w /= s;
+  }
   return w;
 }
 
