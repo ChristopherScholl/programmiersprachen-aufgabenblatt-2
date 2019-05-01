@@ -1,4 +1,5 @@
 #include "mat2.hpp"
+#include <iostream>
 
 Mat2& Mat2::operator *=(Mat2 const& m) {
   float h_00 = e_00;
@@ -19,3 +20,39 @@ Mat2 operator *(Mat2 const& m1, Mat2 const& m2) {
   n *= m2;
   return n;
 }
+
+Vec2 operator *(Mat2 const& m, Vec2 const& v) {
+  Vec2 w;
+  w.x_ = m.e_00 * v.x_ + m.e_10 * v.y_;
+  w.y_ = m.e_01 * v.x_ + m.e_11 * v.y_;
+  return w;
+}
+
+Vec2 operator *(Vec2 const& v, Mat2 const& m){
+  Vec2 w = v;
+  std::cout << "vector is transposed (2x1 --> 1x2), result will be transposed to\n";
+  w.x_ = v.x_ * m.e_00 + v.y_ * m.e_01;
+  w.y_ = v.x_ * m.e_10 + v.y_ * m.e_11;
+  return w;
+}
+
+Mat2 inverse(Mat2 const& m){
+  Mat2 n;
+  float s = m.e_00 * m.e_10 - m.e_01 * m.e_11;
+  n.e_00 = (m.e_11)/s;
+  n.e_10 = (-m.e_10)/s;
+  n.e_01 = (-m.e_01)/s;
+  n.e_11 = (m.e_00)/s;
+  return n;
+}
+
+Mat2 transpose(Mat2 const& m){
+  Mat2 n = m;
+  n.e_10 = m.e_01;
+  n.e_01 = m.e_10;
+  return n;
+}
+
+//Mat2 make_rotation_mat2(float phi){
+//
+//}

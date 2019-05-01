@@ -95,6 +95,35 @@ TEST_CASE("describe_Mat2", "[Mat2]") {
   REQUIRE(d.e_11 == 64.0f);
 }
 
+TEST_CASE("describe_2.6", "[2.6]") {
+  Mat2 a;
+  Mat2 b{ 1.0,2.0,3.0,4.0 };
+  Vec2 c;
+  Vec2 d{ 2.0,3.0 };
+
+  Vec2 e = a * c;
+  REQUIRE(e.x_ == 0.0f);
+  REQUIRE(e.y_ == 0.0f);
+  e = b * d;
+  REQUIRE(e.x_ == 8.0f);
+  REQUIRE(e.y_ == 18.0f);
+  e = d * b;
+  REQUIRE(e.x_ == 11.0f);
+  REQUIRE(e.y_ == 16.0f);
+
+  a = transpose(b);
+  REQUIRE(a.e_00 == 1.0f);
+  REQUIRE(a.e_10 == 3.0f);
+  REQUIRE(a.e_01 == 2.0f);
+  REQUIRE(a.e_11 == 4.0f);
+
+  a = inverse(b);
+  REQUIRE(a.e_00 == Approx((4.0f)/(-10.0f)));
+  REQUIRE(a.e_10 == Approx((-2.0f) / (-10.0f)));
+  REQUIRE(a.e_01 == Approx((-3.0f) / (-10.0f)));
+  REQUIRE(a.e_11 == Approx((1.0f) / (-10.0f)));
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

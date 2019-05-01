@@ -3,6 +3,7 @@
 
 // Mat2 definition
 # include <array >
+# include "vec2.hpp"
 
 struct Mat2 
 {
