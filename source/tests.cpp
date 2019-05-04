@@ -4,6 +4,7 @@
 #include "mat2.hpp"
 #include "color.hpp"
 #include "rectangle.hpp"
+#include "circle.hpp"
 
 TEST_CASE("describe_Vec2", "[Vec2]") {
   //2.2
@@ -147,13 +148,18 @@ TEST_CASE("describe_Color", "[Color]") {
   REQUIRE(b.r_ == Approx(1.0));
 }
 
-TEST_CASE("describe_Rectangle", "[Rectangle]") {
+TEST_CASE("describe_Shapes", "[Shapes]") {
   Rectangle2 a;
   Vec2 c;
   Vec2 d;
-  Rectangle2 b(c, d);
+  Color g;
+  Rectangle2 b(c, d, g);
   float e = a.circumference();
   REQUIRE(e == Approx(4.0));
+
+  Circle2 f;
+  e = f.circumference();
+  REQUIRE(e == Approx(6.28318530718));
 }
 
 int main(int argc, char *argv[])

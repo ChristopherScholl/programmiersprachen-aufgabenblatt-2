@@ -2,6 +2,7 @@
 # define RECTANGLE_HPP
 
 #include "vec2.hpp"
+#include "color.hpp"
 
 // Rectangle data type definition
 class Rectangle2
@@ -9,9 +10,7 @@ class Rectangle2
 public:
   Rectangle2(){}
   Rectangle2(Vec2 const& min, Vec2 const& max, Color const& color):min_(min), max_(max), color_(color) {}
-  float circumference() const { 
-    return 2 * (max_.x_ - min_.x_ + max_.y_ + min_.y_);
-  }
+  float circumference() const;
 
 private:
   Vec2  min_{ 0.0,1.0 };
