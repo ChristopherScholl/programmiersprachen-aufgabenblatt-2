@@ -1,22 +1,22 @@
 # ifndef RECTANGLE_HPP
 # define RECTANGLE_HPP
 
+#include "vec2.hpp"
+
 // Rectangle data type definition
-struct Rectangle
+class Rectangle2
 {
-  float  x_ = 0.0f;
-  float  y_ = 0.0f;
+public:
+  Rectangle2(){}
+  Rectangle2(Vec2 const& min, Vec2 const& max, Color const& color):min_(min), max_(max), color_(color) {}
+  float circumference() const { 
+    return 2 * (max_.x_ - min_.x_ + max_.y_ + min_.y_);
+  }
 
-  /*Vec2& operator +=(Vec2 const& v);
-  Vec2& operator -=(Vec2 const& v);
-  Vec2& operator *=(float s);
-  Vec2& operator /=(float s);*/
+private:
+  Vec2  min_{ 0.0,1.0 };
+  Vec2  max_{ 1.0,0.0 };
+  Color color_{ 0.5,0.5,0.5 };
 };
-
-//Vec2 operator +(Vec2 const& u, Vec2 const& v);
-//Vec2 operator -(Vec2 const& u, Vec2 const& v);
-//Vec2 operator *(Vec2 const& v, float s);
-//Vec2 operator /(Vec2 const& v, float s);
-//Vec2 operator *(float s, Vec2 const& v);
 
 # endif // RECTANGLE_HPP

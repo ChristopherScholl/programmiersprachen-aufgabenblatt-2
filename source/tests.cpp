@@ -3,6 +3,7 @@
 #include "vec2.hpp"
 #include "mat2.hpp"
 #include "color.hpp"
+#include "rectangle.hpp"
 
 TEST_CASE("describe_Vec2", "[Vec2]") {
   //2.2
@@ -144,6 +145,15 @@ TEST_CASE("describe_Color", "[Color]") {
   Color b{ 1.0,0,0 };
   REQUIRE(a.r_ == Approx(0.5));
   REQUIRE(b.r_ == Approx(1.0));
+}
+
+TEST_CASE("describe_Rectangle", "[Rectangle]") {
+  Rectangle2 a;
+  Vec2 c;
+  Vec2 d;
+  Rectangle2 b(c, d);
+  float e = a.circumference();
+  REQUIRE(e == Approx(4.0));
 }
 
 int main(int argc, char *argv[])
