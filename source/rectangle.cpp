@@ -4,3 +4,17 @@
 float Rectangle2::circumference() const {
   return 2 * (max_.x_ - min_.x_ + max_.y_ + min_.y_);
 }
+
+void Rectangle2::draw(Window const& win)const {
+  win.draw_line(max_.x_, max_.y_, max_.x_, min_.y_, color_.r_, color_.g_, color_.b_, 1.0);
+  win.draw_line(max_.x_, max_.y_, min_.x_, max_.y_, color_.r_, color_.g_, color_.b_, 1.0);
+  win.draw_line(min_.x_, min_.y_, max_.x_, min_.y_, color_.r_, color_.g_, color_.b_, 1.0);
+  win.draw_line(min_.x_, min_.y_, min_.x_, max_.y_, color_.r_, color_.g_, color_.b_, 1.0);
+}
+
+void Rectangle2::draw(Window const& win, float t)const {
+  win.draw_line(max_.x_, max_.y_, max_.x_, min_.y_, color_.r_, color_.g_, color_.b_, t);
+  win.draw_line(max_.x_, max_.y_, min_.x_, max_.y_, color_.r_, color_.g_, color_.b_, t);
+  win.draw_line(min_.x_, min_.y_, max_.x_, min_.y_, color_.r_, color_.g_, color_.b_, t);
+  win.draw_line(min_.x_, min_.y_, min_.x_, max_.y_, color_.r_, color_.g_, color_.b_, t);
+}

@@ -59,6 +59,6 @@ Mat2 transpose(Mat2 const& m){
 }
 
 Mat2 make_rotation_mat2(float phi){
-  Mat2 n{ cos(phi),-sin(phi),sin(phi),cos(phi) };
-  return n;
+  Mat2 m{ cos(phi),-sin(phi),sin(phi),cos(phi) };
+  return m;
 }

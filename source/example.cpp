@@ -3,6 +3,13 @@
 #include <utility>
 #include <cmath>
 
+#include "vec2.hpp"
+#include "mat2.hpp"
+#include "rectangle.hpp"
+#include "rectangle.cpp"
+#include "circle.hpp"
+#include "circle.cpp"
+
 
 int main(int argc, char* argv[])
 {
@@ -12,6 +19,16 @@ int main(int argc, char* argv[])
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }
+
+    Vec2 max{ 100.0,600.0 };
+    Vec2 min{ 300.0,100.0 };
+    Color col1{ 1.0,1.0,0.0 };
+    Color col2{ 1.0,0.0,1.0 };
+    
+    Rectangle2 rec(min, max, col1);
+    rec.Rectangle2::draw(win, 1.0);
+    Circle2 cir(max, 50.0, col2);
+    cir.Circle2::draw(win);
 
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 

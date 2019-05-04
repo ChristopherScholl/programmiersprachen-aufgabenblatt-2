@@ -3,6 +3,7 @@
 
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
 // Rectangle data type definition
 class Rectangle2
@@ -11,6 +12,8 @@ public:
   Rectangle2(){}
   Rectangle2(Vec2 const& min, Vec2 const& max, Color const& color):min_(min), max_(max), color_(color) {}
   float circumference() const;
+  void draw(Window const& win) const;
+  void draw(Window const& win, float t) const;
 
 private:
   Vec2  min_{ 0.0,1.0 };
