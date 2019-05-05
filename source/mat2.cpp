@@ -1,5 +1,7 @@
 #include "mat2.hpp"
+
 #include <math.h>
+
 #include <iostream>
 
 Mat2& Mat2::operator *=(Mat2 const& m) {

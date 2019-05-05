@@ -1,10 +1,11 @@
 #define CATCH_CONFIG_RUNNER
-#include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
 #include "color.hpp"
 #include "rectangle.hpp"
 #include "circle.hpp"
+
+#include <catch.hpp>
 
 TEST_CASE("describe_Vec2", "[Vec2]") {
   //2.2
@@ -150,8 +151,8 @@ TEST_CASE("describe_Color", "[Color]") {
 
 TEST_CASE("describe_Shapes", "[Shapes]") {
   Rectangle2 a;
-  Vec2 c;
-  Vec2 d;
+  Vec2 c{ 1.0, 0.0 };
+  Vec2 d{ 10.0,50.0 };
   Color g;
   Rectangle2 b(c, d, g);
   float e = a.circumference();
@@ -160,6 +161,16 @@ TEST_CASE("describe_Shapes", "[Shapes]") {
   Circle2 f;
   e = f.circumference();
   REQUIRE(e == Approx(6.28318530718));
+
+  bool boo = a.is_inside(c);
+  REQUIRE(boo == true);
+  boo = a.is_inside(d);
+  REQUIRE(boo == false);
+
+  boo = f.is_inside(c);
+  REQUIRE(boo == true);
+  boo = f.is_inside(d);
+  REQUIRE(boo == false);
 }
 
 int main(int argc, char *argv[])
