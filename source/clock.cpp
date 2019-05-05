@@ -49,23 +49,23 @@ int main(int argc, char* argv[])
 
     //std::cout << t << std::endl;
     int h = (int)t / (60 * 60);
-    int m = ((int)t - h) / 60;
-    int s = (int)t - h - m;
+    int m = ((int)t) / 60 - h * 60;
+    int s = (int)t - h * 60 * 60 - m * 60;
     h = h % 12;
     m = m % 60;
     s = s % 60;
 
     std::cout << "Time: " << t << " Hours: " << h << " Minutes: " << m << " Seconds: " << s << std::endl;
-    float hr_x = (150.0) * -sin(6.28318530718 / 12 * h) + mid.x_;
-    float hr_y = (150.0) * cos(6.28318530718 / 12 * h) + mid.y_;
+    float hr_x = (150.0) * sin(6.28318530718 / 12 * h) + mid.x_;
+    float hr_y = (150.0) * -cos(6.28318530718 / 12 * h) + mid.y_;
     win.draw_line(250.0f, 250.0f, hr_x, hr_y + 25.0f, 0.0, 0.0, 0.0, 5.0);
 
-    float min_x = (200.0) * -sin(6.28318530718 / 60 * m) + mid.x_;
-    float min_y = (200.0) * cos(6.28318530718 / 60 * m) + mid.y_;
+    float min_x = (200.0) * sin(6.28318530718 / 60 * m) + mid.x_;
+    float min_y = (200.0) * -cos(6.28318530718 / 60 * m) + mid.y_;
     win.draw_line(250.0f, 250.0f, min_x, min_y + 25.0f, 0.0, 0.0, 0.0, 3.0);
 
-    float sec_x = (200.0) * -sin(6.28318530718 / 60 * s) + mid.x_;
-    float sec_y = (200.0) * cos(6.28318530718 / 60 * s) + mid.y_;
+    float sec_x = (200.0) * sin(6.28318530718 / 60 * s) + mid.x_;
+    float sec_y = (200.0) * -cos(6.28318530718 / 60 * s) + mid.y_;
     win.draw_line(250.0f, 250.0f, sec_x, sec_y + 25.0f, 1.0, 0.0, 0.0, 1.0);
 
     win.update();
